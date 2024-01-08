@@ -49,12 +49,13 @@ class UltimateAlarmClockApp extends StatelessWidget {
       theme: kLightThemeData,
       darkTheme: kThemeData,
       themeMode: ThemeMode.system,
+      debugShowCheckedModeBanner: false,
       title: 'UltiClock',
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
       translations: AppTranslations(),
       locale: loc,
-      fallbackLocale: Locale('en', 'US'),
+      fallbackLocale: const Locale('en', 'US'),
       builder: (BuildContext context, Widget? error) {
         ErrorWidget.builder = (FlutterErrorDetails? error) {
           return CustomErrorScreen(errorDetails: error!);

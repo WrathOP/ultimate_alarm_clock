@@ -3,6 +3,7 @@ import 'package:ultimate_alarm_clock/app/modules/bottomNavigationBar/controllers
 import 'package:ultimate_alarm_clock/app/modules/home/controllers/home_controller.dart';
 import 'package:ultimate_alarm_clock/app/modules/settings/controllers/settings_controller.dart';
 import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_controller.dart';
+import 'package:ultimate_alarm_clock/app/modules/timer/controllers/dynamic_island_controller.dart';
 import 'package:ultimate_alarm_clock/app/modules/timer/controllers/timer_controller.dart';
 
 class TimerBinding extends Bindings {
@@ -13,6 +14,9 @@ class TimerBinding extends Bindings {
     );
     Get.put<TimerController>(
       TimerController(),
+    );
+    Get.put<DynamicIslandController>(
+     DynamicIslandController(),
     );
     Get.put<BottomNavigationBarController>(
       BottomNavigationBarController(),

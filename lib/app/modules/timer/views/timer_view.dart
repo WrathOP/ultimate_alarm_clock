@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter_time_picker_spinner/flutter_time_picker_spinner.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:ultimate_alarm_clock/app/data/providers/isar_provider.dart';
 import 'package:ultimate_alarm_clock/app/data/providers/secure_storage_provider.dart';
 import 'package:ultimate_alarm_clock/app/modules/settings/controllers/theme_controller.dart';
+import 'package:ultimate_alarm_clock/app/modules/timer/controllers/dynamic_island_controller.dart';
 import 'package:ultimate_alarm_clock/app/modules/timer/controllers/timer_controller.dart';
 import 'package:ultimate_alarm_clock/app/utils/constants.dart';
 import 'package:ultimate_alarm_clock/app/utils/utils.dart';
@@ -12,6 +16,8 @@ class TimerView extends GetView<TimerController> {
   TimerView({Key? key}) : super(key: key);
 
   ThemeController themeController = Get.find<ThemeController>();
+  DynamicIslandController dynamicIslandController =
+      Get.find<DynamicIslandController>();
 
   @override
   Widget build(BuildContext context) {
@@ -173,10 +179,16 @@ class TimerView extends GetView<TimerController> {
                       : false,
                   child: FloatingActionButton(
                     onPressed: () {
-                            Utils.hapticFeedback();
-                            controller.startTimer();
-                            controller.createTimer();
-                          },
+                      Utils.hapticFeedback();
+                      controller.startTimer();
+                      controller.createTimer();
+                      dynamicIslandController.startLiveActivity(
+                        jsonData: {
+                          'timeRemaining':
+                              controller.remainingTime.value.inSeconds
+                        },
+                      );
+                    },
                     backgroundColor:
                         controller.remainingTime.value.inHours == 0 &&
                                 controller.remainingTime.value.inMinutes == 0 &&

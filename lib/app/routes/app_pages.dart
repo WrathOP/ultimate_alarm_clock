@@ -18,6 +18,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
+import '../modules/timer/bindings/timer_binding.dart';
+import '../modules/timer/views/timer_view.dart';
 
 part 'app_routes.dart';
 
@@ -73,5 +75,11 @@ class AppPages {
       page: () => TimerRingView(),
       binding: TimerRingBinding(),
     ),
+    GetPage(
+      name : _Paths.TIMER,
+      page : () => TimerView(),
+      binding : TimerBinding(),
+    )
+
   ];
 }
